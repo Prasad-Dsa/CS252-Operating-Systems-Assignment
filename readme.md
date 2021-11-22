@@ -28,5 +28,26 @@ T2, 2, 25
 T3, 3, 25
 T4, 3, 15
 T5, 10, 10
-
 ```
+Thus, task T1 has priority 4 and a CPU burst of 20 milliseconds, and so forth. It
+is assumed that all tasks arrive at the same time, so the scheduler algorithms
+do not have to support higher-priority processes preempting processes with
+lower priorities. In addition, tasks do not have to be placed into a queue or list
+in any particular order.
+
+# Details
+The file `driver.c`reads in the schedule of tasks, inserts each task into a linked
+list, and invokes the process scheduler by calling the `schedule()` function. The
+`schedule()` function executes each task according to the specified scheduling
+algorithm. Tasks selected for execution on the CPU are determined by the `pickNextTask()` function and are executed by invoking the `run()` function defined
+in the `CPU.c` file. A `Makefile` is used to determine the specific scheduling algo-
+rithm that will be invoked by driver . For example, to build the FCFS scheduler,
+enter
+```
+make fcfs
+```
+and to execute the scheduler using the schedule of tasks `example_tasks.txt` enter
+```
+./fcfs example_tasks.txt
+```
+
